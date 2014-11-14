@@ -172,7 +172,7 @@ start()
     check_start
     $EXEC_CMD "$ERL \
       $NAME $ERLANG_NODE \
-      -noinput -detached \
+      -noshell \
       -pa $EJABBERD_EBIN_PATH \
       -mnesia dir \"\\\"$SPOOL_DIR\\\"\" \
       $KERNEL_OPTS \

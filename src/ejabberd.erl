@@ -36,6 +36,7 @@ start() ->
     application:start(ejabberd).
 
 stop() ->
+    ?PRINT("~p~n", [?LINE]),
     application:stop(ejabberd).
     %%ejabberd_cover:stop().
 

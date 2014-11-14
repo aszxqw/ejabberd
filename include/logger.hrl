@@ -18,14 +18,18 @@
 %%%
 %%%----------------------------------------------------------------------
 -define(PRINT(Format, Args), io:format(Format, Args)).
+-define(PRINT2(Args), io:format("~p ~p ~p~n", [?FILE, ?LINE, Args]), io:get_chars("Enter to continue: ", 1)).
+-define(PRINT2(), io:format("~p ~p~n", [?FILE, ?LINE]), io:get_chars("Enter to continue: ", 1)).
 
 -ifdef(LAGER).
 -compile([{parse_transform, lager_transform}]).
 
 -define(DEBUG(Format, Args),
+    io:format("~p ~p~n", [?FILE, ?LINE]),
 	lager:debug(Format, Args)).
 
 -define(INFO_MSG(Format, Args),
+    io:format("~p ~p~n", [?FILE, ?LINE]),
 	lager:info(Format, Args)).
 
 -define(WARNING_MSG(Format, Args),
@@ -40,9 +44,11 @@
 -else.
 
 -define(DEBUG(Format, Args),
+    io:format("~p ~p~n", [?FILE, ?LINE]),
 	p1_logger:debug_msg(?MODULE, ?LINE, Format, Args)).
 
 -define(INFO_MSG(Format, Args),
+    io:format("~p ~p~n", [?FILE, ?LINE]),
 	p1_logger:info_msg(?MODULE, ?LINE, Format, Args)).
 
 -define(WARNING_MSG(Format, Args),
