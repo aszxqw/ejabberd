@@ -20,6 +20,8 @@
 -define(PRINT(Format, Args), io:format(Format, Args)).
 -define(PRINT2(Args), io:format("~p ~p ~p~n", [?FILE, ?LINE, Args]), io:get_chars("Enter to continue: ", 1)).
 -define(PRINT2(), io:format("~p ~p~n", [?FILE, ?LINE]), io:get_chars("Enter to continue: ", 1)).
+-define(PRINT3(Args), io:format("~p ~p ~p~n", [?FILE, ?LINE, Args])).
+-define(PRINT3(), io:format("~p ~p~n", [?FILE, ?LINE])).
 
 -ifdef(LAGER).
 -compile([{parse_transform, lager_transform}]).
